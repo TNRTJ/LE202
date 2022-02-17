@@ -48,16 +48,17 @@ set serial port ที่ความเร็ว 115200 B/s
 	       int n = WiFi.scanNetworks();
 	       if(n == 0) {
 		       Serial.println("NO NETWORK FOUND");
-	       } else {
-		              for(int i=0; i<n; i++) {
-			       Serial.print(i + 1);
-			       Serial.print(": ");
-			       Serial.print(WiFi.SSID(i));
-			       Serial.print(" (");
-			       Serial.print(WiFi.RSSI(i));
-			       Serial.println(")");
-			       Serial.print(WiFi.channel(i));
-			       delay(10);
+	       } 
+	       else {
+		       for(int i=0; i<n; i++) {
+			Serial.print(i + 1);
+			Serial.print(": ");
+			Serial.print(WiFi.SSID(i));
+		        Serial.print(" (");
+		        Serial.print(WiFi.RSSI(i));
+		        Serial.println(")");
+			Serial.print(WiFi.channel(i));
+			delay(10);
 		       }
 	       }
 	       Serial.println("\n\n");
@@ -114,8 +115,8 @@ set serial port ที่ความเร็ว 115200 B/s ,set port 0 เป�
 
        void setup()
        {
-	       Serial.begin(115200);
-	       pinMode(0, INPUT);
+	 Serial.begin(115200);
+	 pinMode(0, INPUT);
        	 pinMode(2, OUTPUT);
        	 Serial.println("\n\n\n");
        }
@@ -211,17 +212,17 @@ set serial port ที่ความเร็ว 115200 B/s และทำก�
        int cnt = 0;
 
        void setup(void){
-	       Serial.begin(115200);
+	 Serial.begin(115200);
 
-	       WiFi.softAP(ssid, password);
+	 WiFi.softAP(ssid, password);
          WiFi.softAPConfig(local_ip, gateway, subnet);
-	       delay(100);
+	 delay(100);
 
          server.onNotFound([]() {
             server.send(404, "text/plain", "Path Not Found");
          });
 
-	       server.on("/", []() {
+	 server.on("/", []() {
        		cnt++;
        		String msg = "Hello cnt: ";
 	       	msg += cnt;
